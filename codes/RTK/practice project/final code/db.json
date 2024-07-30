@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "value": "Buy groceries",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "value": "Walk the dog",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "value": "Finish work project",
+      "completed": true
+    },
+    {
+      "id": 4,
+      "value": "Read a book",
+      "completed": true
+    },
+    {
+      "id": 5,
+      "value": "Exercise",
+      "completed": false
+    },
+    {
+      "value": "df",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "value": "d",
+      "completed": false,
+      "id": 8
+    },
+    {
+      "value": "hello baccho",
+      "completed": false,
+      "id": 9
+    }
+  ]
+}
