@@ -6,11 +6,6 @@
       "completed": false
     },
     {
-      "id": 2,
-      "value": "Walk the dog",
-      "completed": true
-    },
-    {
       "id": 3,
       "value": "Finish work project",
       "completed": true
@@ -29,6 +24,11 @@
       "id": 6,
       "value": "Complete Redux",
       "completed": false
+    },
+    {
+      "value": "making a tea",
+      "completed": false,
+      "id": 7
     }
   ]
 }
