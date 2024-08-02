@@ -1,15 +1,13 @@
 import { useState } from "react";
 import Task from "./TaskItem";
 import { Link } from "react-router-dom";
-import { useAddTaskMutation, useDeleteTaskMutation, useGetTasksQuery, useUpdateTaskMutation } from "./apiSlice";
+import { useAddTaskMutation, useDeleteTaskMutation, useGetTasksQuery, useUpdateTaskMutation } from "./tasksSlice";
 
 export default function Home() {
   const [newTask, setNewTask] = useState("");
 
 
-  const BASE_URL = "http://localhost:3000";
-
-  const {data:tasksList,isLoading,isError,isFetching,error} = useGetTasksQuery()
+  const {data:tasksList,isLoading,isError,error} = useGetTasksQuery()
 
   const [addTask] = useAddTaskMutation()
   const[deleteTask]= useDeleteTaskMutation()
@@ -95,3 +93,4 @@ export default function Home() {
     </div>
   );
 }
+

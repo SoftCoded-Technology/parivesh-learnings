@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const BASE_URL = "http://localhost:3000";
 
-export const api = createApi({
+const tasksSlice = createApi({
     baseQuery:fetchBaseQuery({
         baseUrl: BASE_URL
     }),
@@ -50,4 +50,5 @@ export const api = createApi({
     })
 })
 
-export const {useGetTasksQuery,useAddTaskMutation,useDeleteTaskMutation,useUpdateTaskMutation} = api
+export default tasksSlice
+export const {useGetTasksQuery,useAddTaskMutation,useDeleteTaskMutation,useUpdateTaskMutation} = tasksSlice
