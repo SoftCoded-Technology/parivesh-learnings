@@ -22,7 +22,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className="container flex flex-col gap-6 mt-24 mx-auto p-4">
+      <div className="container flex flex-col gap-6 mx-auto p-4">
         <Typography variant="h4" component="h1" className="text-center">
           Shopping Cart
         </Typography>
