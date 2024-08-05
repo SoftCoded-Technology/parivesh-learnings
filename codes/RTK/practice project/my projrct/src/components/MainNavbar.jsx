@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useEffect } from 'react';
-import { fetchProducts } from '../slice/productsSlice';
+// import { fetchProducts } from '../slice/productsSlice';
 import {  fetchCartProducts } from '../slice/cartSlice';
 // import { fetchData } from '../middlewares/productsApi'
 
@@ -25,31 +25,32 @@ const Navbar = () => {
     const cart = useSelector((state) => state.entities.cart.cart)
 	
     useEffect(() => {
-        // dispatch(productsRequested());
-        // dispatch(cartProductsRequested()) 
-        // dispatch(fetchData({
-        //     url: "products",
-        //     onStart: productsRequested.type,
-        //     onSuccess: setProducts.type,
-        //     onError: productsRequestError.type
-        // }))
+    //     // dispatch(productsRequested());
+    //     // dispatch(cartProductsRequested()) 
+    //     // dispatch(fetchData({
+    //     //     url: "products",
+    //     //     onStart: productsRequested.type,
+    //     //     onSuccess: setProducts.type,
+    //     //     onError: productsRequestError.type
+    //     // }))
 
-        // dispatch(
-        //     fetchData({
-        //         url: "carts/1",
-        //         onStart: cartProductsRequested.type,
-        //         onSuccess: setCart.type,
-        //         onError: productsRequestError.type
-        //     })
-        // )
+    //     // dispatch(
+    //     //     fetchData({
+    //     //         url: "carts/1",
+    //     //         onStart: cartProductsRequested.type,
+    //     //         onSuccess: setCart.type,
+    //     //         onError: productsRequestError.type
+    //     //     })
+    //     // )
 		
 
-		// Done using thunk
+	// 	// Done using thunk
 
 
 		dispatch(fetchCartProducts())
 
-		dispatch(fetchProducts())
+	// 	dispatch(fetchProducts())
+
     }, []);
 
 

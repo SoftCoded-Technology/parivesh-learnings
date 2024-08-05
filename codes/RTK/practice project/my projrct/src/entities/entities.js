@@ -6,7 +6,7 @@ import cartReducer from '../slice/cartSlice';
 const entities = combineReducers({
     products:productsReducer,
     wishList:wishListReducer,
-    cart:cartReducer
+    cart:cartReducer,
 })
 
 export default entities
