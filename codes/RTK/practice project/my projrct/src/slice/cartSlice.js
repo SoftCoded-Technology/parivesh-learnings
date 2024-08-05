@@ -8,7 +8,7 @@ export const fetchCartProducts = createAsyncThunk(
       const response = await axios.get("https://fakestoreapi.com/carts/1");
       return response.data;
     } catch (error) {
-      throw error;
+      return error;
     }
   }
 );
