@@ -12,10 +12,7 @@ const WishList = () => {
 
 	const handleAddToCart = (product) => {
 		dispatch(addToCart({
-			id: product.id,
-			title: product.title,
-			price: product.price,
-			image: product.image
+			productId: product.id,
 		}));
 	}
 
