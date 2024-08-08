@@ -5,7 +5,7 @@ const Cart = ({ products, onclear }) => {
     <div>
       <h1>Cart</h1>
       <ul>
-        {products.map((product) => (
+        {products?.map((product) => (
           <li key={product}>{product}</li>
         ))}
       </ul>

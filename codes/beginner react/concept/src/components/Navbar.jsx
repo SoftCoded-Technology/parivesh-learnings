@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
 const Navbar = (props) => {
   return (
     <div>
-      NAVBAR : {props.ProductCount}
+      NAVBAR : {props?.ProductCount}
     </div>
   )
 }

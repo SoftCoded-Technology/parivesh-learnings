@@ -1,6 +1,6 @@
-import { useState, FormEvent } from "react";
+// import { useState, FormEvent } from "react";
 import { useForm } from "react-hook-form";
-import Button from "./components/button";
+// import Button from "./components/button";
 
 function App() {
   // const [drinks, setDrinks] = useState({
@@ -45,7 +45,8 @@ function App() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    // formState: { errors, isValid },
+    formState: { errors },
   } = useForm();
 
   // const [tags, setTags] = useState(["happy","sad","angry"]);
@@ -133,7 +134,6 @@ function App() {
           name="name"
           id="name"
         />
-
         {errors.name?.type === "required" && (
           <p className="text-danger">Name is required</p>
         )}
@@ -148,7 +148,7 @@ function App() {
           // onChange={(e) =>
           //   setPerson({ ...person, age: parseInt(e.target.value) })
           // }
-          {...register("age")}
+          {...register("age",{required:true,min:18})}
           className="form-control"
           type="number"
           name="age"
@@ -156,6 +156,9 @@ function App() {
         />
         {errors.age?.type === "required" && (
           <p className="text-danger">Age is required</p>
+        )}
+        {errors.age?.type === "min" && (
+          <p className="text-danger">Age is below 18</p>
         )}
         <button  type="submit" className="btn btn-outline-danger">
           submit

@@ -1,25 +1,9 @@
 import { useState } from "react";
-// import './App.css'
-// import Navbar from './components/Navbar'
-// import Cart from './components/Cart'
+import './App.css'
+import Navbar from './components/Navbar'
+import Cart from './components/Cart'
 
 function App() {
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
   // const [Cart, setCart] = useState({
   //   discount: 0.2,
@@ -30,9 +14,19 @@ function App() {
   // });
 
   // const handleclick = () =>{
-  //   setCart({...Cart,items:[ Cart.items.map(item => item.id === 1 ? {...item,quantity: item.quantity + 1}:item)]})
+  //   setCart({...Cart,items:[...Cart.items, Cart.items.map(item => item.id === 1 ? {...item,quantity: item.quantity + 1}:item)]})
   //   console.log(Cart)
   // }
+
+  // const handleclick = () => {
+  //   setCart(prevCart => ({
+  //     ...prevCart,
+  //     items: prevCart.items.map(item =>
+  //       item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
+  //     )
+  //   }));
+  //   console.log(Cart);
+  // };
 
   // return (
   //   <>
@@ -49,8 +43,8 @@ function App() {
   // })
 
   // const handleadd = () =>{
-  //   setpizza({...pizza,toppings:[...pizza.toppings, 'cheese']})
   //   console.log(pizza)
+  //   setpizza({...pizza,toppings:[...pizza.toppings, 'cheese']})
   // }
   // const handelremove = (toppingsToRemove) =>{
   //   console.log(toppingsToRemove )
@@ -61,7 +55,7 @@ function App() {
   // return(
   //   <>
   //     {pizza.toppings.map((topping, index) => (
-  //       <h1>{topping}</h1>
+  //       <h1 key={index}>{topping}</h1>
   //     ))}
   //     <button onClick={handleadd}>add</button>
   //     <button onClick={()=>handelremove(pizza.toppings[0])} >remove</button>
@@ -87,18 +81,18 @@ function App() {
   //   </>
   // )
 
-  // const [Products, setProducts] = useState(['product1','product2','product3'])
+  const [Products, setProducts] = useState(['product1','product2','product3'])
 
-  // const   onclear = () => {
-  //   setProducts([])
-  // }
+  const   onclear = () => {
+    setProducts([])
+  }
 
-  // return (
-  //   <>
-  //     <Navbar ProductCount={Products.length}/>
-  //     <Cart onclear={onclear} products = {Products}/>
-  //   </>
-  // )
+  return (
+    <>
+      <Navbar ProductCount={Products.length}/>
+      <Cart onclear={onclear} products = {Products}/>
+    </>
+  )
 }
 
 export default App;
