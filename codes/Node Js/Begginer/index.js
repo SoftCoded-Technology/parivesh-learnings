@@ -1,3 +1,6 @@
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
+
 const config = require('config');
 const Joi = require('joi');
 const express = require('express');
@@ -26,8 +29,11 @@ console.log(`Email password: ${config.get('email.password')}`);
 
 if(app.get('env') === 'development'){
 	app.use(morgan('tiny'));
-	console.log('Morgan enabled');
+	// console.log('Morgan enabled');
+	startupDebugger('Morgan enabled');
 }
+
+dbDebugger('Connected to the database');
 
 const courses = [
 	{ id: 1, name: 'course1' },
