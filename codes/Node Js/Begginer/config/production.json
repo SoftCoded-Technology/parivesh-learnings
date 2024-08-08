@@ -1,0 +1,19 @@
+{
+    
+    "name":"production",
+    "env": "production",
+    "host": "localhost",
+    "port": 3000,
+    "db": {
+        "url": "mongodb://localhost:27017/production"
+    },
+    "email":{
+        "host": "prod-mail.host.com",
+        "port": 587,
+        "secure": true,
+        "auth": {
+            "user": "uVbJt@example.com",
+            "pass": "password"
+        }
+    }
+}

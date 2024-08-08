@@ -1,8 +1,33 @@
+const config = require('config');
 const Joi = require('joi');
 const express = require('express');
+const Logger = require('./middlewares/Logger')
+const Authenticate = require('./middlewares/Authenticate')
+const helmet = require('helmet');
+const morgan = require('morgan');
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(Logger);
+app.use(Authenticate);
+app.use(helmet());
+
+
+console.log(`Environment: ${config.get('name')}`);
+console.log(`DB: ${config.get('db.url')}`);
+console.log(`Email: ${config.get('email.host')}`);
+console.log(`Email password: ${config.get('email.password')}`);
+
+
+// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+// console.log(`app: ${app.get('env')}`);
+
+if(app.get('env') === 'development'){
+	app.use(morgan('tiny'));
+	console.log('Morgan enabled');
+}
 
 const courses = [
 	{ id: 1, name: 'course1' },
