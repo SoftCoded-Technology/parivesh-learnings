@@ -1,39 +1,6 @@
-const startupDebugger = require('debug')('app:startup');
-const dbDebugger = require('debug')('app:db');
-
-const config = require('config');
-const Joi = require('joi');
 const express = require('express');
-const Logger = require('./middlewares/Logger')
-const Authenticate = require('./middlewares/Authenticate')
-const helmet = require('helmet');
-const morgan = require('morgan');
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(Logger);
-app.use(Authenticate);
-app.use(helmet());
-
-
-console.log(`Environment: ${config.get('name')}`);
-console.log(`DB: ${config.get('db.url')}`);
-console.log(`Email: ${config.get('email.host')}`);
-console.log(`Email password: ${config.get('email.password')}`);
-
-
-// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-// console.log(`app: ${app.get('env')}`);
-
-if(app.get('env') === 'development'){
-	app.use(morgan('tiny'));
-	// console.log('Morgan enabled');
-	startupDebugger('Morgan enabled');
-}
-
-dbDebugger('Connected to the database');
+const router = express.Router();
+const Joi = require('joi');
 
 const courses = [
 	{ id: 1, name: 'course1' },
@@ -43,22 +10,17 @@ const courses = [
 	{ id: 5, name: 'course5' },
 	{ id: 6, name: 'course6' },
 ]
-
-app.get('/', (req, res) => {
-	res.send('Hello World!');
-});
-
-app.get('/courses', (req, res) => {
+router.get('/', (req, res) => {
 	res.send(courses);
 })
 
-app.get('/courses/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	const course = courses.find(c => c.id === parseInt(req.params.id));
 	if (!course) return res.status(404).send('The course with the given ID was not found.');
 	res.send(course);
 })
 
-app.post('/courses', (req, res) => {
+router.post('/', (req, res) => {
 	const { error } = validateCourse(req.body);
 	if (error) {
 		return res.status(400).send(error.details[0].message);
@@ -71,7 +33,7 @@ app.post('/courses', (req, res) => {
 	res.send(course);
 })
 
-app.put('/courses/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 	const course = courses.find(c => c.id === parseInt(req.params.id));
 	if (!course) return res.status(404).send('The course with the given ID was not found.');
 
@@ -83,7 +45,7 @@ app.put('/courses/:id', (req, res) => {
 	res.send(course);
 })
 
-app.delete('/courses/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	const course = courses.find(course => course.id === parseInt(req.params.id));
 	if (!course) return res.status(404).send('The course with the given ID was not found.');
 
@@ -93,13 +55,11 @@ app.delete('/courses/:id', (req, res) => {
 	res.send(course);
 })
 
-app.listen(3000, () => {
-	console.log('Server started on port 3000');
-});
-
 function validateCourse(course) {
 	const schema = Joi.object({
 		name: Joi.string().min(3).required()
 	})
 	return schema.validate(course);
 }
+
+module.exports = router;
