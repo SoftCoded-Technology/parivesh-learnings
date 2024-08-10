@@ -1,5 +1,5 @@
-const {Movie, validateMovie} = require('../models/movie');
-const {Genre} = require('../models/genre');
+const { Movie, validateMovie } = require('../models/movie');
+const { Genre } = require('../models/genre');
 const express = require('express');
 // const mongoose = require('mongoose');
 const router = express.Router();
@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const existingMovie = await Movie.findOne({title: req.body.title});
+    const existingMovie = await Movie.findOne({ title: req.body.title });
     if (existingMovie) return res.status(400).send('Movie already exists in db.');
-    const {error} = validateMovie(req.body);
+    const { error } = validateMovie(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     const genre = await Genre.findById(req.body.genreId);

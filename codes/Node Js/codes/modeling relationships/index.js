@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const joi = require('joi');
 const genres = require('./routes/genres');
 const movies = require('./routes/movies');
+const rentals = require('./routes/rentals');
+const customers = require('./routes/customers');
 
 const app = express();
 
@@ -20,5 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/genres', genres);
 app.use('/movies', movies);
+// app.use('/rentals', rental);
+app.use('/customers', customers);
 
 app.listen(3000, () => console.log('Server running on port 3000...'))
